@@ -1,18 +1,48 @@
-# Implementing-Attentions-is-all-you-need-paper-in-pytorch
-In this repository I try to implement the Transformer Architecture from the attention is all you need paper from scratch in pytorch.
+# Transformer from Scratch: Attention Is All You Need
 
-⚙️ Core Components Implemented
-[x] Token Embeddings: Maps vocabulary indices to dense continuous vectors.
-[x] Positional Encodings: Constant, non-learned sinusoidal matrices added to embeddings.
-[x] Masking Mechanisms: - Padding Mask: Ignores <PAD> tokens during attention calculations.Look-Ahead Mask: Prevents the decoder from cheating by attending to future tokens.
-[x] Multi-Head Attention: Splitting embeddings into $h$ heads for parallel attention calculations.[
-x] Position-wise Feed-Forward Networks: Two linear transformations with a ReLU activation in between.
-[x] Residual Connections & Layer Normalization: Ensures stable gradients during deep network training.[x] 
-Final Linear Projection: Maps the decoder output back to vocabulary-sized logits.
-🚀 InstallationClone 
-the repository and install the required dependencies:
-git clone [https://github.com/yourusername/transformer-from-scratch.git](https://github.com/yourusername/transformer-from-scratch.git)
-cd transformer-from-scratch
-pip install torch numpy
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)](https://pytorch.org/)
 
+A clean, modular, and highly readable implementation of the original Transformer architecture as proposed in the seminal 2017 paper [Attention Is All You Need](https://arxiv.org/abs/1706.03762) by Vaswani et al. 
 
+This repository is built from the ground up to serve as an educational resource and a foundational codebase for understanding sequence-to-sequence modeling, self-attention mechanisms, and advanced deep learning architectures.
+
+---
+
+## 📖 Table of Contents
+* [Architecture Overview](#architecture-overview)
+* [Project Structure](#project-structure)
+* [Core Components Implemented](#core-components-implemented)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Future Work](#future-work)
+* [Author](#author)
+
+---
+
+## 🧠 Architecture Overview
+
+The Transformer relies entirely on an attention mechanism to draw global dependencies between input and output, dispensing with recurrence and convolutions entirely. 
+
+Key innovations implemented in this repository:
+1. **Scaled Dot-Product Attention:** The mathematical engine that computes alignment scores.
+2. **Multi-Head Attention:** Allows the model to jointly attend to information from different representation subspaces.
+3. **Positional Encoding:** Injects sequence order information using sine and cosine functions of different frequencies.
+
+---
+
+## 📁 Project Structure
+
+The codebase is strictly modularized to separate the mathematical operations from the high-level layer stacking.
+
+```text
+transformer-from-scratch/
+│
+├── embeddings.py       # Token Embedding and Positional Encoding classes
+├── attention.py        # Scaled Dot-Product and Multi-Head Attention mechanisms
+├── layers.py           # FFN, AddNorm, EncoderLayer, and DecoderLayer definitions
+├── models.py           # Full Encoder, Decoder, and the overarching Transformer class
+├── utils.py            # Helper functions for Padding and Look-ahead masks
+├── train.py            # (WIP) Training loop and dataset handling
+└── README.md
